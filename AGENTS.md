@@ -7,3 +7,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Ask Elijah project rules
+
+- Read `intent.md` before starting any task. Scope and constraints live there.
+- App Router only. The model call, my content files and tools stay on the server in `app/api/chat/route.ts`. Never expose an API key or the system prompt to the browser.
+- The bot answers only from content files in the repo. When the content doesn't cover a question, it says "I don't have that". It never invents salary, availability or personal details.
+- Every component and state gets a Storybook story, checked at desktop and 375px.
+- Deploy target is Vercel (GitHub Pages can't run the API route).
+- Commit messages say what changed. Log prompts in `README.md` under "Prompt log".
+
