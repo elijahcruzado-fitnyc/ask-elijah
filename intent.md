@@ -5,6 +5,9 @@ Proposal reviewed: Wednesday, October 21, 2026 (Week 8)
 Work in progress presentation: Wednesday, October 28, 2026 (Week 9)
 Due: start of Week 10, Wednesday, November 4, 2026
 
+**Live app:** https://ask-elijah.vercel.app
+**On my portfolio:** embedded on elijahcruzado.com through `https://ask-elijah.vercel.app/embed.js`
+
 Sources used for this document: my portfolio (elijahcruzado.webflow.io), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com.
 
 ---
@@ -172,12 +175,14 @@ Stored as Markdown files in `content/`, one subject per file, so I can edit them
 
 ### Architecture
 
-- **Next.js App Router.** One page (`app/page.tsx`) with the hero and the chat. The chat is a Client Component.
-- **`app/api/chat/route.ts`.** Receives only the messages from the browser. Builds the system prompt and loads `content/` on the server. Calls the model through the Vercel AI SDK and Vercel AI Gateway with `streamText`. Defines the four tools. Enforces the length cap, message count cap, user and assistant roles only, and a step limit.
+- **Next.js App Router.** `app/page.tsx` is the standalone page (hero plus chat). `app/embed/page.tsx` is the transparent page shown inside the frame on my portfolio. The chat is a Client Component.
+- **`app/api/chat/route.ts`.** Receives only the messages from the browser. Builds the instructions from `content/` on the server (`lib/system-prompt.ts`), calls the model through the Vercel AI SDK and Vercel AI Gateway with `streamText`, and runs the four tools (`lib/tools.ts`). Enforces a per visitor rate limit, the length cap, the message count cap, user and assistant roles only, and a step limit.
 - **Vercel AI SDK `useChat`** on the client for streaming and tool results. Each tool result type maps to one card component.
-- **Components** (shadcn/ui based, each with Storybook stories): `ChatLauncher`, `ChatPanel`, `MessageList`, `UserMessage`, `AssistantMessage`, `TypingIndicator`, `StarterChips`, `FollowUpChips`, `ProjectCard`, `ExperienceTimeline`, `ResumeCard`, `ContactCard`, `ErrorMessage`, `LimitReachedMessage`.
-- **Environment.** `AI_GATEWAY_API_KEY` in `.env.local` and in Vercel project settings. Never committed, never sent to the browser.
-- **Deploy.** Vercel, with preview deploys for each pull request.
+- **Components** (in `components/chat/`, each with Storybook stories): `Avatar`, `ChatLauncher`, `ChatPanel`, `Message`, `TypingIndicator`, `ProjectCard`, `ExperienceTimeline`, `ResumeCard`, `ContactCard`, `CardSkeleton`, `ChatWidget`.
+- **Visual design.** Matched to elijahcruzado.com: tokens, Bricolage Grotesque, buttons, pills and cards taken from the portfolio's Webflow stylesheet (`app/globals.css`).
+- **Embed.** `public/embed.js` adds one fixed frame to the host page and resizes it when the chat opens. Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io may frame it (`frame-ancestors` in `next.config.ts`).
+- **Environment.** On Vercel, AI Gateway signs in with the project's OIDC token, so no API key is stored there. Locally, `AI_GATEWAY_API_KEY` goes in `.env.local`. Nothing is committed or sent to the browser.
+- **Deploy.** Vercel project `ask-elijah`, deployed automatically on every push to `main`.
 
 ### Success criteria
 
@@ -224,15 +229,15 @@ Stored as Markdown files in `content/`, one subject per file, so I can edit them
 
 About two weeks, alongside a new full time role.
 
-| Date | Milestone |
-| --- | --- |
-| Wed Oct 21 (Week 8) | Proposal review, `intent.md`, repo created |
-| By Fri Oct 23 | Figma wireframes for launcher, panel, messages and the four cards. Content files drafted, Legrand filled in |
-| By Mon Oct 26 | API route with system prompt, content loading and guardrails. Chat streaming locally. Stories for messages and panel |
-| Wed Oct 28 (Week 9) | 2 to 3 minute work in progress demo: launcher, streaming chat, `showProject` card. Deployed preview on Vercel |
-| By Sun Nov 1 | Remaining cards, follow up chips, mobile layout, accessibility pass, all stories |
-| By Tue Nov 3 | Testing (the eight checks in Success criteria), README with live URL and Figma link |
-| Wed Nov 4 (Week 10) | Midterm due |
+| Date | Milestone | Status |
+| --- | --- | --- |
+| Wed Oct 21 (Week 8) | Proposal review, `intent.md`, repo created | Done |
+| By Fri Oct 23 | Figma wireframes for launcher, panel, messages and the four cards. Content files drafted, Legrand filled in | Content drafted. Figma and Legrand details still open |
+| By Mon Oct 26 | API route with system prompt, content loading and guardrails. Chat streaming locally. Stories for messages and panel | Done |
+| Wed Oct 28 (Week 9) | 2 to 3 minute work in progress demo. Deployed on Vercel | Done. Live on Vercel and embedded on my portfolio |
+| By Sun Nov 1 | Remaining cards, follow up chips, mobile layout, accessibility pass, all stories | Done (27 stories) |
+| By Tue Nov 3 | Testing (the seven checks in Success criteria), README with live URL and Figma link | Live URL done. Figma link open |
+| Wed Nov 4 (Week 10) | Midterm due | |
 
 ### Data
 
@@ -251,7 +256,7 @@ About two weeks, alongside a new full time role.
 
 - Next.js with the App Router, TypeScript.
 - Vercel AI SDK and Vercel AI Gateway. Model to be chosen for cost and speed (Week 6 used `google/gemini-2.5-flash-lite`).
-- shadcn/ui for the chat UI, Motion for the launcher and panel animation, Tailwind for styling.
+- Tailwind with components built to match my portfolio's design system (instead of shadcn/ui defaults), Motion for the launcher and panel animation.
 - Storybook for every component and state at desktop and 375px.
 - Figma for wireframes and the final design, linked in the README.
 - Vercel for hosting. GitHub Pages can't run the `/api/chat` route because it only serves static files.
@@ -268,9 +273,10 @@ About two weeks, alongside a new full time role.
 - Mobile layout, keyboard and screen reader support
 - Storybook stories for every state
 - Deployed on Vercel
+- Visual design matched to my portfolio
+- Embedded on elijahcruzado.com (Webflow) with one script tag. Originally a stretch idea, done in Week 9
 
 **Out for the midterm (stretch ideas)**
-- Embedding it on elijahcruzado.com (Webflow) with a script tag or iframe
 - Saving anonymous questions to Supabase to see what recruiters ask
 - "Match me to this job": paste a job post and the bot explains the fit
 - A first person voice or persona that sounds like me
@@ -279,8 +285,9 @@ About two weeks, alongside a new full time role.
 ### Cost and abuse
 
 - 500 character cap per message and about 20 messages per session.
-- A cheap, fast model through AI Gateway, with a spending limit set on the Gateway key.
-- Stretch: rate limiting per IP address.
+- A cheap, fast model through AI Gateway (`google/gemini-2.5-flash-lite`), with a spending limit on the AI Gateway account.
+- Rate limit of 30 requests per visitor every 10 minutes (per server instance).
+- Only my portfolio domains can show the chat in a frame.
 
 ### Accessibility and quality
 
@@ -292,7 +299,7 @@ About two weeks, alongside a new full time role.
 ## Open questions for instructors
 
 1. Is a portfolio assistant different enough from the Week 6 chat app? What's new: answers grounded in my own content, four designed tool cards with actions, server only prompt and content, an animated branded launcher, follow up suggestions and accessibility work.
-2. Should it be its own deployed app for the midterm, or should it live inside my existing Webflow site? My plan is its own Vercel app now and a Webflow embed later.
+2. Should it be its own deployed app for the midterm, or should it live inside my existing Webflow site? Resolved by doing both: it is its own Vercel app, and the same app is embedded on my Webflow portfolio.
 3. Is a 2D Motion character enough for the launcher, or would you like to see React Three Fiber, since Week 8 covered it?
 
 ## Notes from proposal review

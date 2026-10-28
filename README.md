@@ -1,6 +1,7 @@
 # Ask Elijah
 
 **Live app:** https://ask-elijah.vercel.app
+**On my portfolio:** https://elijahcruzado.com (launcher in the bottom right corner)
 **Figma design:** coming soon
 **Intent:** [intent.md](./intent.md)
 
@@ -8,15 +9,29 @@ A chat assistant for elijahcruzado.com. Recruiters and hiring managers ask about
 
 ## Stack
 
-Next.js (App Router) · Vercel AI SDK · Vercel AI Gateway · shadcn/ui · Motion · Storybook · Vercel
+Next.js 16 (App Router) · Vercel AI SDK 7 · Vercel AI Gateway · Tailwind 4 · Motion · Storybook 10 · Vercel
 
-## What works now (Week 9)
+## Midterm requirements
 
+| Requirement | Status |
+| --- | --- |
+| `intent.md` in the repo root answering what, who and constraints | Done |
+| Next.js app built with the App Router | Done |
+| Deployed on Vercel, live URL at the top of this README | Done: https://ask-elijah.vercel.app |
+| Wireframe or design in Figma, linked in this README | Open |
+| Week 9 assignment accepted, its README links to this repo | See Week 9 repo |
+| 2 to 3 minute work in progress presentation | Given in Week 9 |
+
+## What works
+
+- Live on Vercel and embedded on my Webflow portfolio with one script tag.
+- Visual design matched to elijahcruzado.com: Bricolage Grotesque, the portfolio's colors, buttons, pills and cards.
 - Home page with an animated launcher (Motion) that opens the chat panel. Escape or the close button closes it and returns focus.
 - Streaming answers from `app/api/chat/route.ts`, grounded only in the files in `content/`. The prompt and content never reach the browser.
 - Four tools with designed cards: project (`showProject`), experience timeline (`showExperience`), résumé (`getResume`), contact (`contactElijah`).
 - Starter questions, and follow up questions after each answer.
-- Guardrails: 500 character cap, 20 questions per conversation, user and assistant roles only, empty messages rejected, step limit, friendly errors.
+- Guardrails: 500 character cap, 20 questions per conversation, 30 requests per visitor per 10 minutes, user and assistant roles only, empty messages rejected, step limit, friendly errors.
+- Only my portfolio domains can show the chat in a frame.
 - Storybook: 27 stories covering every card and panel state, including errors, limits and 375px.
 
 ## Run it locally
@@ -65,3 +80,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 4. "Look at week 9" then "Continue without a browser": built the first working version: content files, chat route with tools and guardrails, launcher, panel, cards, follow ups, and Storybook stories.
 5. "Can you make the chatbot use ui css styling and visual design from my website: https://elijahcruzado.webflow.io/" (tokens, fonts, buttons, pills and cards taken from elijahcruzado.webflow.shared.905761db3.css)
 6. "Do this for me and make sure everything is set up": added the Webflow embed (/embed and embed.js), frame allowlist, per visitor rate limit, and deployed to Vercel.
+7. "That worked, now just make sure the GitHub is updated so I can submit for the midterm": updated intent.md (architecture, milestone status, scope) and this README for submission.
