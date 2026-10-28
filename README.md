@@ -19,7 +19,7 @@ Next.js 16 (App Router) · Vercel AI SDK 7 · Vercel AI Gateway · Tailwind 4 ·
 | Next.js app built with the App Router | Done |
 | Deployed on Vercel, live URL at the top of this README | Done: https://ask-elijah.vercel.app |
 | Wireframe or design in Figma, linked in this README | Open |
-| Week 9 assignment accepted, its README links to this repo | See Week 9 repo |
+| Repo on my own GitHub account, instructors (`dave11mj`, `hedyd`) invited as collaborators | Done |
 | 2 to 3 minute work in progress presentation | Given in Week 9 |
 
 ## What works
@@ -81,3 +81,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 5. "Can you make the chatbot use ui css styling and visual design from my website: https://elijahcruzado.webflow.io/" (tokens, fonts, buttons, pills and cards taken from elijahcruzado.webflow.shared.905761db3.css)
 6. "Do this for me and make sure everything is set up": added the Webflow embed (/embed and embed.js), frame allowlist, per visitor rate limit, and deployed to Vercel.
 7. "That worked, now just make sure the GitHub is updated so I can submit for the midterm": updated intent.md (architecture, milestone status, scope) and this README for submission.
+8. "There isn't anything on Classroom 50 to accept, we are doing this in our own repo and invited Hedy and David": replaced the Classroom 50 row in the checklist.
