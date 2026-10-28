@@ -67,16 +67,16 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
         if (e.key === "Escape" && onClose) onClose();
       }}
     >
-      <header className="flex items-center gap-3 border-b border-line bg-surface px-4 py-3">
+      <header className="flex items-center gap-3 border-b border-hairline bg-surface px-4 py-3">
         <Avatar size={40} />
         <div className="min-w-0 flex-1">
-          <h2 id={titleId} className="text-base leading-tight font-semibold">
+          <h2 id={titleId} className="text-[22px] leading-7 font-medium">
             Ask Elijah
           </h2>
           <p className="text-xs text-muted">An AI assistant that knows Elijah's work. It can make mistakes.</p>
         </div>
         {onReset && messages.length > 0 && (
-          <button type="button" onClick={onReset} className="min-h-11 rounded-full px-3 text-xs font-semibold text-muted hover:text-ink">
+          <button type="button" onClick={onReset} className="label min-h-11 rounded-full px-3 text-muted hover:text-ink">
             New chat
           </button>
         )}
@@ -85,7 +85,7 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
             type="button"
             onClick={onClose}
             aria-label="Close chat"
-            className="grid size-11 place-items-center rounded-full text-muted hover:bg-paper hover:text-ink"
+            className="grid size-11 place-items-center rounded-full border border-line text-ink transition-colors hover:bg-accent-hover"
           >
             <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
               <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -97,7 +97,7 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
       <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-4">
         <div role="log" aria-live="polite" aria-relevant="additions" className="flex flex-col gap-4">
           <div className="flex flex-col items-start">
-            <p className="max-w-[92%] rounded-2xl rounded-bl-md border border-line bg-surface px-4 py-2.5 text-sm leading-relaxed">
+            <p className="max-w-[92%] rounded-[20px] rounded-bl-md border border-line bg-accent-soft px-4 py-2.5 text-[15px] leading-6">
               Hi, I&apos;m Elijah&apos;s assistant. Ask about his experience, his case studies, or how he works.
             </p>
           </div>
@@ -106,17 +106,17 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
           ))}
           {showTyping && <TypingIndicator />}
           {error && (
-            <div role="alert" className="rounded-2xl border border-danger/40 bg-danger-soft px-4 py-3 text-sm text-ink">
+            <div role="alert" className="rounded-[20px] border border-danger bg-danger-soft px-4 py-3 text-[15px] text-ink">
               <p>{error}</p>
               {onRetry && !atLimit && (
-                <button type="button" onClick={onRetry} className="mt-2 min-h-11 font-semibold text-danger underline underline-offset-2">
+                <button type="button" onClick={onRetry} className="btn mt-3">
                   Try again
                 </button>
               )}
             </div>
           )}
           {atLimit && !error && (
-            <p role="status" className="rounded-2xl border border-line bg-surface px-4 py-3 text-sm text-muted">
+            <p role="status" className="rounded-[20px] border border-line bg-surface px-4 py-3 text-[15px] text-muted">
               That&apos;s the limit for one conversation. Start a new chat, or reach Elijah on LinkedIn.
             </p>
           )}
@@ -134,7 +134,7 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
                   type="button"
                   onClick={() => send(q)}
                   disabled={busy}
-                  className="min-h-11 rounded-full border border-line bg-surface px-3.5 text-sm text-ink hover:border-accent disabled:opacity-50"
+                  className="pill"
                 >
                   {q}
                 </button>
@@ -144,7 +144,7 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
         </div>
       )}
 
-      <form onSubmit={onSubmit} className="border-t border-line bg-surface px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
+      <form onSubmit={onSubmit} className="border-t border-hairline bg-surface px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
         <div className="flex items-end gap-2">
           <label htmlFor={`${titleId}-input`} className="sr-only">
             Your question
@@ -165,12 +165,12 @@ export function ChatPanel({ messages, status, error, onSend, onClose, onRetry, o
             placeholder={atLimit ? "Conversation limit reached" : "Ask a question"}
             aria-describedby={`${titleId}-hint`}
             aria-invalid={tooLong || undefined}
-            className="max-h-32 min-h-11 flex-1 resize-none rounded-2xl border border-line bg-paper px-4 py-2.5 text-base text-ink placeholder:text-muted focus:border-accent focus:outline-none sm:text-sm"
+            className="max-h-32 min-h-11 flex-1 resize-none rounded-[10px] border border-line bg-surface px-4 py-2.5 text-base leading-6 text-ink placeholder:text-muted focus:outline-2 focus:outline-offset-2 focus:outline-dark sm:text-[15px]"
           />
           <button
             type="submit"
             disabled={!canSend}
-            className="min-h-11 rounded-full bg-accent px-5 text-sm font-semibold text-accent-ink disabled:opacity-40"
+            className="btn btn-primary"
           >
             Send
           </button>

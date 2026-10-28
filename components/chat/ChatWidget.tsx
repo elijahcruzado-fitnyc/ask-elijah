@@ -56,7 +56,7 @@ export function ChatWidget({ openOnLoad = false }: { openOnLoad?: boolean }) {
             />
             <motion.div
               key="panel"
-              className="fixed inset-0 z-50 sm:inset-y-3 sm:right-3 sm:left-auto sm:w-[420px] sm:overflow-hidden sm:rounded-3xl sm:border sm:border-line sm:shadow-2xl"
+              className="fixed inset-0 z-50 sm:inset-y-3 sm:right-3 sm:left-auto sm:w-[420px] sm:overflow-hidden sm:rounded-[30px] sm:border sm:border-line sm:shadow-[0_24px_60px_-20px_rgba(29,29,29,0.35)]"
               initial={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}

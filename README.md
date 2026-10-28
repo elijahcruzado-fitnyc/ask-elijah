@@ -49,3 +49,4 @@ No key yet? `ASK_ELIJAH_MOCK=1 npm run dev` runs a scripted test model so you ca
 2. "Can you look and interact with https://emekarajis.com/ to learn his AI chatbot and functionality" (teardown of the reference chatbot)
 3. "Can you use this information for my intent? Make it detailed, use my portfolio https://elijahcruzado.webflow.io/, LinkedIn, resume, and the case study projects for Haleon and Legrand. Also my current role is Senior Product Designer at JPMC"
 4. "Look at week 9" then "Continue without a browser": built the first working version: content files, chat route with tools and guardrails, launcher, panel, cards, follow ups, and Storybook stories.
+5. "Can you make the chatbot use ui css styling and visual design from my website: https://elijahcruzado.webflow.io/" (tokens, fonts, buttons, pills and cards taken from elijahcruzado.webflow.shared.905761db3.css)

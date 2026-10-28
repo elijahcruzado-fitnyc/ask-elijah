@@ -19,4 +19,4 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Content lives in `content/` (Markdown facts plus `data.ts` for card data). Tools return content from there; the model never writes card facts.
 - `ASK_ELIJAH_MOCK=1` is for local testing only. Never set it in Vercel.
 - Storybook uses `@tailwindcss/vite` (see `.storybook/main.ts`) because the app compiles Tailwind through Turbopack.
-
+- Visual design matches elijahcruzado.com. Tokens live at the top of `app/globals.css` (from the site's Webflow stylesheet). Use the `.btn`, `.btn-primary`, `.pill` and `.label` classes there instead of new button styles. Secondary text uses `--muted` (#5c5c5c), not the site's #ababab, for WCAG contrast.

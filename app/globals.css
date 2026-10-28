@@ -1,36 +1,65 @@
 @import "tailwindcss";
 
-/* Ask Elijah tokens. Light by default, dark when the OS asks for it. */
-:root {
-  --paper: #f6f4ef;
-  --surface: #ffffff;
-  --ink: #16161a;
-  --muted: #5d5d66;
-  --line: #e3e0d8;
-  --accent: #2d4bf0;
-  --accent-ink: #ffffff;
-  --accent-soft: #e7ebff;
-  --bubble-user: #16161a;
-  --bubble-user-ink: #ffffff;
-  --danger: #b42318;
-  --danger-soft: #fdecea;
+/*
+ * Ask Elijah tokens, matched to elijahcruzado.com (Webflow stylesheet
+ * elijahcruzado.webflow.shared.905761db3.css). Light only, like the site.
+ */
+
+/* Fallback for Storybook and the embed: the same font files the portfolio
+   uses. The Next.js app loads Bricolage Grotesque through next/font. */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("https://cdn.prod.website-files.com/696996310c02e35484d6599f/696996320c02e35484d65a69_BricolageGrotesque-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("https://cdn.prod.website-files.com/696996310c02e35484d6599f/696996320c02e35484d65a6b_BricolageGrotesque-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("https://cdn.prod.website-files.com/696996310c02e35484d6599f/696996320c02e35484d65a6a_BricolageGrotesque-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0f0f12;
-    --surface: #18181d;
-    --ink: #f2f1ee;
-    --muted: #a3a3ad;
-    --line: #2a2a31;
-    --accent: #7d92ff;
-    --accent-ink: #0f0f12;
-    --accent-soft: #1f2440;
-    --bubble-user: #f2f1ee;
-    --bubble-user-ink: #0f0f12;
-    --danger: #ff8a7a;
-    --danger-soft: #3a1714;
-  }
+:root {
+  /* From the portfolio */
+  --dark: #1d1d1d;
+  --white: #ffffff;
+  --white-hover: whitesmoke;
+  --blue: #9cadce;
+  --purple-hover: #d8d8ff;
+  --light-blue: #a7cecb;
+  --dry-sage: #cacc90;
+  --lemon: #f4ebbe;
+  --cool-steel: #8ba6a9;
+  --button-shadow: #1d1d1d2b;
+  --radius-s: 10px;
+  --radius-m: 20px;
+  --radius-l: 30px;
+  --pill: 50px;
+
+  /* Chat roles */
+  --paper: var(--white);
+  --surface: var(--white);
+  --ink: var(--dark);
+  /* The site's --secondary (#ababab) fails WCAG contrast on white for body
+     text, so secondary text uses dark at reduced strength instead. */
+  --muted: #5c5c5c;
+  --line: var(--dark);
+  --hairline: #e4e4e4;
+  --accent: var(--blue);
+  --accent-hover: var(--purple-hover);
+  --accent-ink: var(--dark);
+  --accent-soft: var(--lemon);
+  --bubble-user: var(--dark);
+  --bubble-user-ink: var(--white);
+  --danger: #a3261a;
+  --danger-soft: #fbe9e7;
 }
 
 @theme inline {
@@ -39,24 +68,88 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
+  --color-hairline: var(--hairline);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-white-hover: var(--white-hover);
   --color-bubble-user: var(--bubble-user);
   --color-bubble-user-ink: var(--bubble-user-ink);
   --color-danger: var(--danger);
   --color-danger-soft: var(--danger-soft);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-brand, "Bricolage Grotesque"), "Bricolage Grotesque", system-ui, sans-serif;
+  --radius-s: var(--radius-s);
+  --radius-m: var(--radius-m);
+  --radius-l: var(--radius-l);
 }
 
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--dark);
   outline-offset: 2px;
+}
+
+@layer components {
+  /* .button on the portfolio */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 12px 22px 14px;
+    border: 1px solid var(--dark);
+    border-radius: var(--radius-s);
+    box-shadow: inset 0 -4px 0 0 var(--button-shadow);
+    background: var(--white);
+    color: var(--dark);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    letter-spacing: -0.02em;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .btn:hover { background: var(--white-hover); }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  /* .button.background-purple */
+  .btn-primary { background: var(--blue); box-shadow: inset 0 -4px 0 0 #7f93ba; }
+  .btn-primary:hover { background: var(--purple-hover); }
+  .btn-primary:disabled:hover { background: var(--blue); }
+
+  /* .more-button */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid var(--dark);
+    border-radius: var(--pill);
+    background: var(--white);
+    color: var(--dark);
+    font-size: 15px;
+    line-height: 20px;
+    transition: background-color 0.2s ease-in-out;
+  }
+  .pill:hover { background: var(--purple-hover); }
+  .pill:disabled { opacity: 0.45; }
+
+  /* .label */
+  .label {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
 }

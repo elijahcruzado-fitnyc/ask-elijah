@@ -13,7 +13,7 @@ export function Message({ message }: { message: ChatMessage }) {
     const text = message.parts.map((p) => (p.type === "text" ? p.text : "")).join("");
     return (
       <div className="flex justify-end">
-        <p className="max-w-[85%] rounded-2xl rounded-br-md bg-bubble-user px-4 py-2.5 text-sm leading-relaxed text-bubble-user-ink">
+        <p className="max-w-[85%] rounded-[20px] rounded-br-md bg-bubble-user px-4 py-2.5 text-[15px] leading-6 text-bubble-user-ink">
           <span className="sr-only">You said: </span>
           {text}
         </p>
@@ -34,7 +34,7 @@ export function Message({ message }: { message: ChatMessage }) {
             return part.text.trim() ? (
               <p
                 key={key}
-                className="max-w-[92%] rounded-2xl rounded-bl-md border border-line bg-surface px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap"
+                className="max-w-[92%] rounded-[20px] rounded-bl-md border border-line bg-surface px-4 py-2.5 text-[15px] leading-6 whitespace-pre-wrap"
               >
                 {part.text}
               </p>
@@ -64,7 +64,7 @@ export function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="size-2 animate-bounce rounded-full bg-muted motion-reduce:animate-none"
+          className="size-2 animate-bounce rounded-full bg-ink motion-reduce:animate-none"
           style={{ animationDelay: `${i * 150}ms` }}
         />
       ))}

@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "Takeaway: unifying many brands needed strong governance and close design, product and engineering collaboration.",
     ],
     url: `${PORTFOLIO}/haleon-huddle`,
-    accent: "#0f766e",
+    accent: "#a7cecb",
   },
   {
     id: "legrand",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
       "In his words, the project was less about the final UI and more about the diagnostic work that made the UI possible.",
     details: [],
     url: "",
-    accent: "#b45309",
+    accent: "#cacc90",
   },
   {
     id: "herbalife",
@@ -79,7 +79,7 @@ export const projects: Project[] = [
       "A simpler shopping experience and a handed off design system with over 600 components.",
     details: [],
     url: `${PORTFOLIO}/herbalife`,
-    accent: "#15803d",
+    accent: "#f4ebbe",
   },
   {
     id: "opentable",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     outcome: "A warmer, clearer discovery flow with group planning support.",
     details: [],
     url: `${PORTFOLIO}/opentable`,
-    accent: "#b91c1c",
+    accent: "#8ba6a9",
   },
   {
     id: "rayban",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     outcome: "A focused, mobile friendly shopping experience.",
     details: [],
     url: `${PORTFOLIO}/rayban`,
-    accent: "#1f2937",
+    accent: "#9cadce",
   },
   {
     id: "honeymoon",
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     outcome: "A cohesive festival world across brand, digital and physical touchpoints.",
     details: [],
     url: `${PORTFOLIO}/honeymoon`,
-    accent: "#9d174d",
+    accent: "#d8d8ff",
   },
 ];
 

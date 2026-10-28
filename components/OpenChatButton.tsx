@@ -5,7 +5,7 @@ export function OpenChatButton({ children }: { children: React.ReactNode }) {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event("ask-elijah:open"))}
-      className="min-h-12 rounded-full bg-accent px-6 text-base font-semibold text-accent-ink hover:opacity-90"
+      className="btn btn-primary"
     >
       {children}
     </button>

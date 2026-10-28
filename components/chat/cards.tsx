@@ -1,10 +1,7 @@
 import type { Contact, ExperienceItem, Project, Resume } from "@/lib/types";
 
-const cardBase = "w-full overflow-hidden rounded-2xl border border-line bg-surface text-ink";
-const buttonBase =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors";
-const primary = `${buttonBase} bg-accent text-accent-ink hover:opacity-90`;
-const secondary = `${buttonBase} border border-line text-ink hover:bg-paper`;
+// Matches the portfolio's .card: 1px dark border, 20px radius, white.
+const cardBase = "w-full overflow-hidden rounded-[20px] border border-line bg-surface text-ink";
 
 function ExternalIcon() {
   return (
@@ -18,46 +15,44 @@ export function ProjectCard({ project }: { project: Project }) {
   const meta = [project.client, project.year, project.company && `at ${project.company}`].filter(Boolean).join(" · ");
   return (
     <article className={cardBase} aria-label={`${project.title} case study`}>
-      <div className="flex items-end gap-3 px-4 pt-4 pb-3" style={{ background: project.accent, color: "#fff" }}>
-        <div className="min-w-0">
-          <p className="text-xs font-medium opacity-85">{meta}</p>
-          <h3 className="text-lg leading-tight font-semibold">{project.title}</h3>
-        </div>
+      <div className="border-b border-line px-5 pt-5 pb-4" style={{ background: project.accent }}>
+        <p className="label">{meta}</p>
+        <h3 className="mt-1 text-[22px] leading-7 font-medium">{project.title}</h3>
       </div>
-      <div className="space-y-3 p-4 text-sm leading-relaxed">
+      <div className="space-y-3 p-5 text-[15px] leading-6">
         <p>
-          <span className="font-semibold">Role. </span>
+          <span className="font-medium">Role. </span>
           {project.role}
         </p>
         <p>
-          <span className="font-semibold">Problem. </span>
+          <span className="font-medium">Problem. </span>
           {project.problem}
         </p>
         <div>
-          <p className="font-semibold">What he did</p>
-          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted">
+          <p className="font-medium">What he did</p>
+          <ul className="mt-1 list-disc space-y-1 pl-5 font-light">
             {project.whatIDid.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
         <p>
-          <span className="font-semibold">Outcome. </span>
+          <span className="font-medium">Outcome. </span>
           {project.outcome}
         </p>
-        <ul className="flex flex-wrap gap-1.5" aria-label="Tags">
+        <ul className="flex flex-wrap gap-1.5 pt-1" aria-label="Tags">
           {project.tags.map((tag) => (
-            <li key={tag} className="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-medium text-ink">
+            <li key={tag} className="rounded-[50px] border border-line px-3 py-1 text-[13px] leading-5">
               {tag}
             </li>
           ))}
         </ul>
         {project.url ? (
-          <a href={project.url} target="_blank" rel="noreferrer" className={primary}>
+          <a href={project.url} target="_blank" rel="noreferrer" className="btn btn-primary mt-1">
             Open case study <ExternalIcon />
           </a>
         ) : (
-          <p className="text-xs text-muted">No public case study page yet.</p>
+          <p className="text-[13px] text-muted">No public case study page yet.</p>
         )}
       </div>
     </article>
@@ -67,29 +62,31 @@ export function ProjectCard({ project }: { project: Project }) {
 export function ExperienceTimeline({ items }: { items: ExperienceItem[] }) {
   return (
     <article className={cardBase} aria-label="Experience timeline">
-      <h3 className="px-4 pt-4 text-sm font-semibold">Experience</h3>
-      <ol className="relative m-4 mt-3 space-y-4 border-l border-line pl-5">
+      <h3 className="label px-5 pt-5">Experience</h3>
+      <ol className="relative m-5 mt-3 space-y-4 border-l border-line pl-5">
         {items.map((item) => (
           <li key={`${item.company}-${item.role}`} className="relative">
             <span
               aria-hidden="true"
-              className={`absolute top-1.5 -left-[25px] size-2.5 rounded-full ${
-                item.current ? "bg-accent" : "border border-line bg-surface"
+              className={`absolute top-1.5 -left-[26px] size-3 rounded-full border border-line ${
+                item.current ? "bg-accent" : item.education ? "bg-accent-soft" : "bg-surface"
               }`}
             />
-            <p className="text-sm font-semibold">
+            <p className="text-[15px] leading-6 font-medium">
               {item.role}, {item.company}
               {item.current && (
-                <span className="ml-2 rounded-full bg-accent-soft px-2 py-0.5 text-xs font-medium">Current</span>
+                <span className="ml-2 rounded-[50px] border border-line bg-accent px-2 py-0.5 text-[12px] font-medium">
+                  Current
+                </span>
               )}
             </p>
-            <p className="text-xs text-muted">{item.dates}</p>
-            <p className="mt-1 text-sm leading-relaxed text-muted">{item.detail}</p>
+            <p className="text-[13px] text-muted">{item.dates}</p>
+            <p className="mt-1 text-[15px] leading-6 font-light">{item.detail}</p>
           </li>
         ))}
       </ol>
-      <div className="px-4 pb-4">
-        <a href="https://www.linkedin.com/in/elijahcruzado/" target="_blank" rel="noreferrer" className={secondary}>
+      <div className="px-5 pb-5">
+        <a href="https://www.linkedin.com/in/elijahcruzado/" target="_blank" rel="noreferrer" className="btn">
           View on LinkedIn <ExternalIcon />
         </a>
       </div>
@@ -102,15 +99,15 @@ export function ResumeCard({ resume }: { resume: Resume }) {
     <article className={`${cardBase} flex items-center gap-3 p-4`} aria-label="Résumé">
       <div
         aria-hidden="true"
-        className="grid size-12 shrink-0 place-items-center rounded-xl bg-accent-soft text-xs font-bold text-accent"
+        className="grid size-12 shrink-0 place-items-center rounded-[10px] border border-line bg-accent-soft text-[12px] font-medium"
       >
         {resume.format}
       </div>
       <div className="min-w-0 flex-1">
-        <h3 className="truncate text-sm font-semibold">{resume.title}</h3>
-        <p className="text-xs text-muted">{resume.note}</p>
+        <h3 className="truncate text-[15px] font-medium">{resume.title}</h3>
+        <p className="text-[13px] text-muted">{resume.note}</p>
       </div>
-      <a href={resume.url} target="_blank" rel="noreferrer" className={primary} aria-label={`Open ${resume.title}`}>
+      <a href={resume.url} target="_blank" rel="noreferrer" className="btn btn-primary" aria-label={`Open ${resume.title}`}>
         Open
       </a>
     </article>
@@ -119,19 +116,19 @@ export function ResumeCard({ resume }: { resume: Resume }) {
 
 export function ContactCard({ contact }: { contact: Contact }) {
   return (
-    <article className={`${cardBase} p-4`} aria-label="Contact Elijah">
-      <h3 className="text-sm font-semibold">Reach Elijah directly</h3>
-      <p className="mt-1 text-sm text-muted">He's happy to answer anything this assistant can't.</p>
-      <div className="mt-3 flex flex-wrap gap-2">
-        <a href={contact.linkedin} target="_blank" rel="noreferrer" className={primary}>
+    <article className={`${cardBase} p-5`} aria-label="Contact Elijah">
+      <h3 className="text-[18px] leading-6 font-medium">Reach Elijah directly</h3>
+      <p className="mt-1 text-[15px] leading-6 font-light">He&apos;s happy to answer anything this assistant can&apos;t.</p>
+      <div className="mt-4 flex flex-wrap gap-2">
+        <a href={contact.linkedin} target="_blank" rel="noreferrer" className="btn btn-primary">
           Message on LinkedIn <ExternalIcon />
         </a>
         {contact.email && (
-          <a href={`mailto:${contact.email}`} className={secondary}>
+          <a href={`mailto:${contact.email}`} className="btn">
             Email
           </a>
         )}
-        <a href={contact.portfolio} target="_blank" rel="noreferrer" className={secondary}>
+        <a href={contact.portfolio} target="_blank" rel="noreferrer" className="btn">
           Portfolio <ExternalIcon />
         </a>
       </div>
@@ -141,10 +138,10 @@ export function ContactCard({ contact }: { contact: Contact }) {
 
 export function CardSkeleton({ label }: { label: string }) {
   return (
-    <div className={`${cardBase} p-4`} role="status" aria-label={label}>
-      <div className="h-4 w-1/3 animate-pulse rounded bg-line" />
-      <div className="mt-3 h-3 w-full animate-pulse rounded bg-line" />
-      <div className="mt-2 h-3 w-2/3 animate-pulse rounded bg-line" />
+    <div className={`${cardBase} p-5`} role="status" aria-label={label}>
+      <div className="h-4 w-1/3 animate-pulse rounded bg-hairline" />
+      <div className="mt-3 h-3 w-full animate-pulse rounded bg-hairline" />
+      <div className="mt-2 h-3 w-2/3 animate-pulse rounded bg-hairline" />
     </div>
   );
 }
