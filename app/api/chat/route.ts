@@ -7,6 +7,7 @@ import {
   type UIMessage,
 } from "ai";
 import { LIMITS } from "@/lib/limits";
+import { isRateLimited, visitorKey } from "@/lib/rate-limit";
 import { buildInstructions } from "@/lib/system-prompt";
 import { tools } from "@/lib/tools";
 
@@ -37,6 +38,10 @@ async function getModel() {
 }
 
 export async function POST(req: Request) {
+  if (isRateLimited(visitorKey(req))) {
+    return fail(429, "You're asking faster than I can keep up. Wait a few minutes, or reach Elijah on LinkedIn.");
+  }
+
   let messages: UIMessage[];
   try {
     ({ messages } = await req.json());

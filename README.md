@@ -30,6 +30,18 @@ npm run storybook              # http://localhost:6006
 
 No key yet? `ASK_ELIJAH_MOCK=1 npm run dev` runs a scripted test model so you can click through every card. Never set it on Vercel.
 
+## Add it to elijahcruzado.com (Webflow)
+
+1. Deploy to Vercel and copy the production URL.
+2. In Webflow: Site settings → Custom code → Footer code, paste:
+   ```html
+   <script src="https://YOUR-APP.vercel.app/embed.js" defer></script>
+   ```
+3. Publish the site. The launcher appears in the bottom right of every page.
+4. Optional: give any link or button the attribute `data-ask-elijah` to open the chat from it.
+
+Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can show the chat in a frame. To change that list, set `ASK_ELIJAH_FRAME_ANCESTORS` in Vercel (space separated). Custom code needs a paid Webflow site plan.
+
 ## Where things live
 
 | Path | What it is |
@@ -39,7 +51,9 @@ No key yet? `ASK_ELIJAH_MOCK=1 npm run dev` runs a scripted test model so you ca
 | `lib/system-prompt.ts` | Builds the instructions on the server from the content |
 | `lib/tools.ts` | The four tools. They return content, the model only picks which card |
 | `lib/limits.ts` | Message length, conversation and step caps |
-| `app/api/chat/route.ts` | The chat route: validation, model call, streaming |
+| `app/api/chat/route.ts` | The chat route: rate limit, validation, model call, streaming |
+| `app/embed/page.tsx`, `public/embed.js` | The Webflow embed: frame page and loader script |
+| `lib/rate-limit.ts` | 30 requests per visitor per 10 minutes (per server instance) |
 | `components/chat/` | Avatar, launcher, panel, messages, cards |
 | `stories/` | Storybook stories and fixtures |
 
@@ -50,3 +64,4 @@ No key yet? `ASK_ELIJAH_MOCK=1 npm run dev` runs a scripted test model so you ca
 3. "Can you use this information for my intent? Make it detailed, use my portfolio https://elijahcruzado.webflow.io/, LinkedIn, resume, and the case study projects for Haleon and Legrand. Also my current role is Senior Product Designer at JPMC"
 4. "Look at week 9" then "Continue without a browser": built the first working version: content files, chat route with tools and guardrails, launcher, panel, cards, follow ups, and Storybook stories.
 5. "Can you make the chatbot use ui css styling and visual design from my website: https://elijahcruzado.webflow.io/" (tokens, fonts, buttons, pills and cards taken from elijahcruzado.webflow.shared.905761db3.css)
+6. "Do this for me and make sure everything is set up": added the Webflow embed (/embed and embed.js), frame allowlist, per visitor rate limit, and deployed to Vercel.

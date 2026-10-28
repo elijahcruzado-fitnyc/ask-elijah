@@ -19,7 +19,17 @@ function readableError(error: Error | undefined) {
   return error.message && error.message.length < 200 ? error.message : "Something went wrong. Try again in a moment.";
 }
 
-export function ChatWidget({ openOnLoad = false }: { openOnLoad?: boolean }) {
+type ChatWidgetProps = {
+  openOnLoad?: boolean;
+  /**
+   * Inside the Webflow embed frame. The frame is sized by public/embed.js,
+   * so the panel fills it, there is no scrim, and open or close is reported
+   * to the host page so it can resize the frame.
+   */
+  embedded?: boolean;
+};
+
+export function ChatWidget({ openOnLoad = false, embedded = false }: ChatWidgetProps) {
   const [open, setOpen] = useState(openOnLoad);
   const launcherRef = useRef<HTMLButtonElement>(null);
   const wasOpen = useRef(open);
@@ -32,20 +42,40 @@ export function ChatWidget({ openOnLoad = false }: { openOnLoad?: boolean }) {
     wasOpen.current = open;
   }, [open]);
 
-  // Let the hero button on the page open the chat.
+  // Let the hero button on the page, or the host page around the embed,
+  // open the chat.
   useEffect(() => {
     const openChat = () => setOpen(true);
+    const onMessage = (e: MessageEvent) => {
+      if (e.data?.type === "ask-elijah:open") setOpen(true);
+    };
     window.addEventListener("ask-elijah:open", openChat);
-    return () => window.removeEventListener("ask-elijah:open", openChat);
+    window.addEventListener("message", onMessage);
+    return () => {
+      window.removeEventListener("ask-elijah:open", openChat);
+      window.removeEventListener("message", onMessage);
+    };
   }, []);
+
+  // Tell the host page to grow or shrink the frame. Only a boolean is sent.
+  useEffect(() => {
+    if (embedded && window.parent !== window) {
+      window.parent.postMessage({ type: "ask-elijah:state", open }, "*");
+    }
+  }, [embedded, open]);
 
   return (
     <>
-      <ChatLauncher ref={launcherRef} open={open} onOpen={() => setOpen(true)} />
+      <ChatLauncher
+        ref={launcherRef}
+        open={open}
+        onOpen={() => setOpen(true)}
+        positionClassName={embedded ? "right-2 bottom-2" : undefined}
+      />
       <AnimatePresence>
         {open && (
           <>
-            <motion.div
+            {!embedded && <motion.div
               key="scrim"
               aria-hidden="true"
               className="fixed inset-0 z-40 bg-black/30 sm:bg-black/20"
@@ -53,10 +83,12 @@ export function ChatWidget({ openOnLoad = false }: { openOnLoad?: boolean }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-            />
+            />}
             <motion.div
               key="panel"
-              className="fixed inset-0 z-50 sm:inset-y-3 sm:right-3 sm:left-auto sm:w-[420px] sm:overflow-hidden sm:rounded-[30px] sm:border sm:border-line sm:shadow-[0_24px_60px_-20px_rgba(29,29,29,0.35)]"
+              className={embedded
+                ? "fixed inset-0 z-50 overflow-hidden sm:rounded-[30px] sm:border sm:border-line"
+                : "fixed inset-0 z-50 sm:inset-y-3 sm:right-3 sm:left-auto sm:w-[420px] sm:overflow-hidden sm:rounded-[30px] sm:border sm:border-line sm:shadow-[0_24px_60px_-20px_rgba(29,29,29,0.35)]"}
               initial={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, x: 40 }}
