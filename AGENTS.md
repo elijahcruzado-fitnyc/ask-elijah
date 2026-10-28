@@ -16,4 +16,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - Every component and state gets a Storybook story, checked at desktop and 375px.
 - Deploy target is Vercel (GitHub Pages can't run the API route).
 - Commit messages say what changed. Log prompts in `README.md` under "Prompt log".
+- Content lives in `content/` (Markdown facts plus `data.ts` for card data). Tools return content from there; the model never writes card facts.
+- `ASK_ELIJAH_MOCK=1` is for local testing only. Never set it in Vercel.
+- Storybook uses `@tailwindcss/vite` (see `.storybook/main.ts`) because the app compiles Tailwind through Turbopack.
 
