@@ -1,6 +1,6 @@
 # Ask Elijah
 
-**Live app:** coming soon (Vercel)
+**Live app:** https://ask-elijah.vercel.app
 **Figma design:** coming soon
 **Intent:** [intent.md](./intent.md)
 
@@ -32,10 +32,10 @@ No key yet? `ASK_ELIJAH_MOCK=1 npm run dev` runs a scripted test model so you ca
 
 ## Add it to elijahcruzado.com (Webflow)
 
-1. Deploy to Vercel and copy the production URL.
+1. The app is deployed at https://ask-elijah.vercel.app (Vercel project `ask-elijah`, auto deploys on every push to `main`). AI Gateway signs in with Vercel OIDC, so no API key is stored in Vercel.
 2. In Webflow: Site settings → Custom code → Footer code, paste:
    ```html
-   <script src="https://YOUR-APP.vercel.app/embed.js" defer></script>
+   <script src="https://ask-elijah.vercel.app/embed.js" defer></script>
    ```
 3. Publish the site. The launcher appears in the bottom right of every page.
 4. Optional: give any link or button the attribute `data-ask-elijah` to open the chat from it.

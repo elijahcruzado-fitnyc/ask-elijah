@@ -1,7 +1,7 @@
 /*
  * Ask Elijah embed loader for elijahcruzado.com (Webflow).
  * Paste into Webflow: Site settings → Custom code → Footer code
- *   <script src="https://YOUR-APP.vercel.app/embed.js" defer></script>
+ *   <script src="https://ask-elijah.vercel.app/embed.js" defer></script>
  *
  * Adds one fixed frame in the bottom right corner. The frame is small while
  * the chat is closed and grows to the panel size when it opens (full screen
