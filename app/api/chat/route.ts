@@ -71,7 +71,10 @@ export async function POST(req: Request) {
     }
   }
 
-  if (process.env.ASK_ELIJAH_MOCK !== "1" && !process.env.AI_GATEWAY_API_KEY && !process.env.VERCEL_OIDC_TOKEN) {
+  // On Vercel, AI Gateway signs in with the project's OIDC token, so no key
+  // is needed there. Locally, AI_GATEWAY_API_KEY must be in .env.local.
+  const onVercel = process.env.VERCEL === "1";
+  if (process.env.ASK_ELIJAH_MOCK !== "1" && !onVercel && !process.env.AI_GATEWAY_API_KEY && !process.env.VERCEL_OIDC_TOKEN) {
     return fail(503, "The assistant isn't connected yet. Add AI_GATEWAY_API_KEY to .env.local and restart the server.");
   }
 
