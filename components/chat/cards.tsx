@@ -3,10 +3,30 @@ import type { Contact, ExperienceItem, Project, Resume } from "@/lib/types";
 // Matches the portfolio's .card: 1px dark border, 20px radius, white.
 const cardBase = "w-full overflow-hidden rounded-[20px] border border-line bg-surface text-ink";
 
+// Link behavior:
+// - Portfolio pages (case studies, home) open in the same tab. target="_top"
+//   so that inside the Webflow embed frame they replace the whole page, not
+//   just the frame.
+// - LinkedIn and the résumé open in a new tab, marked with the external icon
+//   and announced to screen readers.
+const SAME_TAB = { target: "_top" } as const;
+const NEW_TAB = { target: "_blank", rel: "noreferrer" } as const;
+
 function ExternalIcon() {
   return (
+    <>
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+        <path d="M6 3h7v7M13 3 5 11" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      </svg>
+      <span className="sr-only"> (opens in a new tab)</span>
+    </>
+  );
+}
+
+function ArrowIcon() {
+  return (
     <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
-      <path d="M6 3h7v7M13 3 5 11" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -48,8 +68,8 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
         {project.url ? (
-          <a href={project.url} target="_blank" rel="noreferrer" className="btn btn-primary mt-1">
-            Open case study <ExternalIcon />
+          <a href={project.url} {...SAME_TAB} className="btn btn-primary mt-1">
+            Open case study <ArrowIcon />
           </a>
         ) : (
           <p className="text-[13px] text-muted">No public case study page yet.</p>
@@ -86,7 +106,7 @@ export function ExperienceTimeline({ items }: { items: ExperienceItem[] }) {
         ))}
       </ol>
       <div className="px-5 pb-5">
-        <a href="https://www.linkedin.com/in/elijahcruzado/" target="_blank" rel="noreferrer" className="btn">
+        <a href="https://www.linkedin.com/in/elijahcruzado/" {...NEW_TAB} className="btn">
           View on LinkedIn <ExternalIcon />
         </a>
       </div>
@@ -107,8 +127,8 @@ export function ResumeCard({ resume }: { resume: Resume }) {
         <h3 className="truncate text-[15px] font-medium">{resume.title}</h3>
         <p className="text-[13px] text-muted">{resume.note}</p>
       </div>
-      <a href={resume.url} target="_blank" rel="noreferrer" className="btn btn-primary" aria-label={`Open ${resume.title}`}>
-        Open
+      <a href={resume.url} {...NEW_TAB} className="btn btn-primary" aria-label={`Open ${resume.title} (opens in a new tab)`}>
+        Open <ExternalIcon />
       </a>
     </article>
   );
@@ -120,7 +140,7 @@ export function ContactCard({ contact }: { contact: Contact }) {
       <h3 className="text-[18px] leading-6 font-medium">Reach Elijah directly</h3>
       <p className="mt-1 text-[15px] leading-6 font-light">He&apos;s happy to answer anything this assistant can&apos;t.</p>
       <div className="mt-4 flex flex-wrap gap-2">
-        <a href={contact.linkedin} target="_blank" rel="noreferrer" className="btn btn-primary">
+        <a href={contact.linkedin} {...NEW_TAB} className="btn btn-primary">
           Message on LinkedIn <ExternalIcon />
         </a>
         {contact.email && (
@@ -128,8 +148,8 @@ export function ContactCard({ contact }: { contact: Contact }) {
             Email
           </a>
         )}
-        <a href={contact.portfolio} target="_blank" rel="noreferrer" className="btn">
-          Portfolio <ExternalIcon />
+        <a href={contact.portfolio} {...SAME_TAB} className="btn">
+          Portfolio <ArrowIcon />
         </a>
       </div>
     </article>

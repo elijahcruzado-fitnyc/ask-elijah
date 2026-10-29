@@ -32,6 +32,7 @@ Next.js 16 (App Router) · Vercel AI SDK 7 · Vercel AI Gateway · Tailwind 4 ·
 - Starter questions, and follow up questions after each answer.
 - Guardrails: 500 character cap, 20 questions per conversation, 30 requests per visitor per 10 minutes, user and assistant roles only, empty messages rejected, step limit, friendly errors.
 - Only my portfolio domains can show the chat in a frame.
+- Case study and portfolio links open in the same tab (replacing the whole page, even inside the Webflow embed). LinkedIn and the résumé open in a new tab.
 - Storybook: 27 stories covering every card and panel state, including errors, limits and 375px.
 
 ## Design
@@ -99,3 +100,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 9. "Can you quickly generate a wireframe, remember the previous wireframe we used. Recreate it to make our design": rebuilt the course Chat App Wireframe states (closed, empty, draft, thinking, complete, follow up, guardrail, error) as Ask Elijah at 1440 and 375, with components and the portfolio color variables in Figma.
 10. "Make sure all of this is in the repo and updated": added docs/reference-teardown.md and a Design section describing the Figma file.
 11. "Can you make sure the tool links work, for example for Haleon it goes to elijahcruzado.webflow.io which is wrong. Correct is elijahcruzado.com": project card, case study and "View portfolio" links now use elijahcruzado.com.
+12. "Can you make it so the tool doesn't open a new tab, do it only for LinkedIn and my resume": case study and portfolio links open in the same tab (target _top, so they work inside the embed); LinkedIn and résumé keep a new tab with an external icon and screen reader note.
