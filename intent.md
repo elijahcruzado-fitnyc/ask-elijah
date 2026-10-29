@@ -9,7 +9,7 @@ Due: start of Week 10, Wednesday, November 4, 2026
 **On my portfolio:** embedded on elijahcruzado.com through `https://ask-elijah.vercel.app/embed.js`
 **Figma design:** https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM
 
-Sources used for this document: my portfolio (elijahcruzado.webflow.io), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com ([docs/reference-teardown.md](./docs/reference-teardown.md)).
+Sources used for this document: my portfolio (elijahcruzado.com), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com ([docs/reference-teardown.md](./docs/reference-teardown.md)).
 
 ---
 
@@ -145,7 +145,7 @@ Stored as Markdown files in `content/`, one subject per file, so I can edit them
 - **Design system:** a token driven system across six brand properties. Each brand adapts the system to keep its own identity while staying consistent.
 - **Roadmap:** Huddle 2025 (redesign and brand migration), then Huddle 2026 and Experience Hub 2026 (content hubs, first steps toward personalization, social proof).
 - **Takeaways:** unifying many brands needed strong governance and close design, product and engineering collaboration. Next: hubs, soccer and homepage evolution in the system's component lifecycle and contribution model.
-- **Link:** elijahcruzado.webflow.io/haleon-huddle
+- **Link:** elijahcruzado.com/haleon-huddle
 
 **`content/projects/legrand.md`** (needs my input: there is no Legrand case study page yet)
 - **Client:** Legrand, at dentsu. **Work:** navigation and information architecture redesign.
@@ -153,10 +153,10 @@ Stored as Markdown files in `content/`, one subject per file, so I can edit them
 - **To add before Week 9:** year, my exact role, the research methods, what the hub led model is and how it works, two or three key decisions, the outcome, images, and a link (or a note that the bot has no page to link to).
 
 **`content/projects/other.md`**
-- **Herbalife** (dentsu): redesign of the brand identity and ecommerce platform to simplify purchasing for customers and distributors and appeal to a younger audience. Handed off a design system with over 600 components. elijahcruzado.webflow.io/herbalife
-- **OpenTable** (academic, Spring 2023, team of four): restaurant discovery redesign to cut clutter, build trust and support group planning. elijahcruzado.webflow.io/opentable
-- **RayBan** (academic, Fall 2022, team of four): ecommerce redesign with clearer navigation hierarchy, more engaging product imagery and a focused homepage. elijahcruzado.webflow.io/rayban
-- **Honeymoon** (academic, Spring 2023, team of two): a conceptual music festival brand experience inspired by Lana Del Rey. elijahcruzado.webflow.io/honeymoon
+- **Herbalife** (dentsu): redesign of the brand identity and ecommerce platform to simplify purchasing for customers and distributors and appeal to a younger audience. Handed off a design system with over 600 components. elijahcruzado.com/herbalife
+- **OpenTable** (academic, Spring 2023, team of four): restaurant discovery redesign to cut clutter, build trust and support group planning. elijahcruzado.com/opentable
+- **RayBan** (academic, Fall 2022, team of four): ecommerce redesign with clearer navigation hierarchy, more engaging product imagery and a focused homepage. elijahcruzado.com/rayban
+- **Honeymoon** (academic, Spring 2023, team of two): a conceptual music festival brand experience inspired by Lana Del Rey. elijahcruzado.com/honeymoon
 
 **`content/testimonials.md`** (public on my homepage)
 - "Elijah's mind is naturally strategic, analytical and creative, and he's able to pull strong insights from loose data very effectively." Tony Owens, Senior Director, Experience Strategy.

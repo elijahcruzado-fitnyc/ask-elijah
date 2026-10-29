@@ -18,7 +18,7 @@ export default function Home() {
       </div>
       <div className="flex flex-wrap items-center gap-4">
         <OpenChatButton>Ask Elijah</OpenChatButton>
-        <a href="https://elijahcruzado.webflow.io" className="btn">
+        <a href="https://elijahcruzado.com" className="btn">
           View portfolio
         </a>
       </div>

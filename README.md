@@ -98,3 +98,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 8. "There isn't anything on Classroom 50 to accept, we are doing this in our own repo and invited Hedy and David": replaced the Classroom 50 row in the checklist.
 9. "Can you quickly generate a wireframe, remember the previous wireframe we used. Recreate it to make our design": rebuilt the course Chat App Wireframe states (closed, empty, draft, thinking, complete, follow up, guardrail, error) as Ask Elijah at 1440 and 375, with components and the portfolio color variables in Figma.
 10. "Make sure all of this is in the repo and updated": added docs/reference-teardown.md and a Design section describing the Figma file.
+11. "Can you make sure the tool links work, for example for Haleon it goes to elijahcruzado.webflow.io which is wrong. Correct is elijahcruzado.com": project card, case study and "View portfolio" links now use elijahcruzado.com.

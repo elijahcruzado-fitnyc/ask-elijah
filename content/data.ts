@@ -4,7 +4,7 @@
 
 import type { Contact, ExperienceItem, Project, Resume } from "@/lib/types";
 
-const PORTFOLIO = "https://elijahcruzado.webflow.io";
+const PORTFOLIO = "https://elijahcruzado.com";
 
 export const projects: Project[] = [
   {
