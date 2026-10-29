@@ -87,17 +87,6 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 | `stories/` | Storybook stories and fixtures |
 | `docs/reference-teardown.md` | Teardown of the emekarajis.com assistant that inspired this project |
 
-## Prompt log
-
-1. "Create a Next.js App Router app called ask-elijah and an intent.md that answers: what am I building, who is it for, and what are the constraints. Use my midterm idea notes." (Week 8, proposal review prep)
-2. "Can you look and interact with https://emekarajis.com/ to learn his AI chatbot and functionality" (teardown of the reference chatbot)
-3. "Can you use this information for my intent? Make it detailed, use my portfolio https://elijahcruzado.webflow.io/, LinkedIn, resume, and the case study projects for Haleon and Legrand. Also my current role is Senior Product Designer at JPMC"
-4. "Look at week 9" then "Continue without a browser": built the first working version: content files, chat route with tools and guardrails, launcher, panel, cards, follow ups, and Storybook stories.
-5. "Can you make the chatbot use ui css styling and visual design from my website: https://elijahcruzado.webflow.io/" (tokens, fonts, buttons, pills and cards taken from elijahcruzado.webflow.shared.905761db3.css)
-6. "Do this for me and make sure everything is set up": added the Webflow embed (/embed and embed.js), frame allowlist, per visitor rate limit, and deployed to Vercel.
-7. "That worked, now just make sure the GitHub is updated so I can submit for the midterm": updated intent.md (architecture, milestone status, scope) and this README for submission.
-8. "There isn't anything on Classroom 50 to accept, we are doing this in our own repo and invited Hedy and David": replaced the Classroom 50 row in the checklist.
-9. "Can you quickly generate a wireframe, remember the previous wireframe we used. Recreate it to make our design": rebuilt the course Chat App Wireframe states (closed, empty, draft, thinking, complete, follow up, guardrail, error) as Ask Elijah at 1440 and 375, with components and the portfolio color variables in Figma.
 10. "Make sure all of this is in the repo and updated": added docs/reference-teardown.md and a Design section describing the Figma file.
 11. "Can you make sure the tool links work, for example for Haleon it goes to elijahcruzado.webflow.io which is wrong. Correct is elijahcruzado.com": project card, case study and "View portfolio" links now use elijahcruzado.com.
 12. "Can you make it so the tool doesn't open a new tab, do it only for LinkedIn and my resume": case study and portfolio links open in the same tab (target _top, so they work inside the embed); LinkedIn and résumé keep a new tab with an external icon and screen reader note.
