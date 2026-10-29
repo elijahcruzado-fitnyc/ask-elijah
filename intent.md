@@ -9,7 +9,7 @@ Due: start of Week 10, Wednesday, November 4, 2026
 **On my portfolio:** embedded on elijahcruzado.com through `https://ask-elijah.vercel.app/embed.js`
 **Figma design:** https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM
 
-Sources used for this document: my portfolio (elijahcruzado.webflow.io), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com.
+Sources used for this document: my portfolio (elijahcruzado.webflow.io), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com ([docs/reference-teardown.md](./docs/reference-teardown.md)).
 
 ---
 

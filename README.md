@@ -34,6 +34,19 @@ Next.js 16 (App Router) · Vercel AI SDK 7 · Vercel AI Gateway · Tailwind 4 ·
 - Only my portfolio domains can show the chat in a frame.
 - Storybook: 27 stories covering every card and panel state, including errors, limits and 375px.
 
+## Design
+
+Figma: [Ask Elijah · Midterm Wireframe](https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM). It recreates the states from the course Chat App Wireframe in my portfolio's design system.
+
+| Section | What's in it |
+| --- | --- |
+| Desktop · 1440 | Closed (launcher on my portfolio), Empty (starter questions), Draft, Thinking, Complete (project card), Follow up (experience timeline), Guardrail (salary, contact card), Error |
+| Mobile · 375 | Closed, Empty, Complete (project card), Guardrail (salary) |
+| Foundations | Color palette, type scale (Bricolage Grotesque) and shape rules, taken from the portfolio's Webflow stylesheet |
+| Components | Avatar, chat launcher, button (primary, hover, secondary, disabled, optional arrow), chip, tag, message bubble (user, assistant, greeting), typing indicator, panel header, composer, project, experience, résumé and contact cards, error message. Colors are Figma variables matching `app/globals.css` |
+
+Research behind the design: [docs/reference-teardown.md](./docs/reference-teardown.md), a teardown of the AI assistant on emekarajis.com.
+
 ## Run it locally
 
 ```
@@ -71,6 +84,7 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 | `lib/rate-limit.ts` | 30 requests per visitor per 10 minutes (per server instance) |
 | `components/chat/` | Avatar, launcher, panel, messages, cards |
 | `stories/` | Storybook stories and fixtures |
+| `docs/reference-teardown.md` | Teardown of the emekarajis.com assistant that inspired this project |
 
 ## Prompt log
 
@@ -83,3 +97,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 7. "That worked, now just make sure the GitHub is updated so I can submit for the midterm": updated intent.md (architecture, milestone status, scope) and this README for submission.
 8. "There isn't anything on Classroom 50 to accept, we are doing this in our own repo and invited Hedy and David": replaced the Classroom 50 row in the checklist.
 9. "Can you quickly generate a wireframe, remember the previous wireframe we used. Recreate it to make our design": rebuilt the course Chat App Wireframe states (closed, empty, draft, thinking, complete, follow up, guardrail, error) as Ask Elijah at 1440 and 375, with components and the portfolio color variables in Figma.
+10. "Make sure all of this is in the repo and updated": added docs/reference-teardown.md and a Design section describing the Figma file.
