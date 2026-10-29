@@ -2,7 +2,7 @@
 
 **Live app:** https://ask-elijah.vercel.app
 **On my portfolio:** https://elijahcruzado.com (launcher in the bottom right corner)
-**Figma design:** coming soon
+**Figma design:** https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM
 **Intent:** [intent.md](./intent.md)
 
 A chat assistant for elijahcruzado.com. Recruiters and hiring managers ask about my skills, experience and projects, and it answers only from content I provide. CT390 Rapid Prototyping with AI midterm, FIT, Fall 2026. Due Wednesday, November 4.
@@ -18,7 +18,7 @@ Next.js 16 (App Router) · Vercel AI SDK 7 · Vercel AI Gateway · Tailwind 4 ·
 | `intent.md` in the repo root answering what, who and constraints | Done |
 | Next.js app built with the App Router | Done |
 | Deployed on Vercel, live URL at the top of this README | Done: https://ask-elijah.vercel.app |
-| Wireframe or design in Figma, linked in this README | Open |
+| Wireframe or design in Figma, linked in this README | Done: [Ask Elijah · Midterm Wireframe](https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM) |
 | Repo on my own GitHub account, instructors (`dave11mj`, `hedyd`) invited as collaborators | Done |
 | 2 to 3 minute work in progress presentation | Given in Week 9 |
 
@@ -82,3 +82,4 @@ Only elijahcruzado.com, www.elijahcruzado.com and elijahcruzado.webflow.io can s
 6. "Do this for me and make sure everything is set up": added the Webflow embed (/embed and embed.js), frame allowlist, per visitor rate limit, and deployed to Vercel.
 7. "That worked, now just make sure the GitHub is updated so I can submit for the midterm": updated intent.md (architecture, milestone status, scope) and this README for submission.
 8. "There isn't anything on Classroom 50 to accept, we are doing this in our own repo and invited Hedy and David": replaced the Classroom 50 row in the checklist.
+9. "Can you quickly generate a wireframe, remember the previous wireframe we used. Recreate it to make our design": rebuilt the course Chat App Wireframe states (closed, empty, draft, thinking, complete, follow up, guardrail, error) as Ask Elijah at 1440 and 375, with components and the portfolio color variables in Figma.

@@ -7,6 +7,7 @@ Due: start of Week 10, Wednesday, November 4, 2026
 
 **Live app:** https://ask-elijah.vercel.app
 **On my portfolio:** embedded on elijahcruzado.com through `https://ask-elijah.vercel.app/embed.js`
+**Figma design:** https://www.figma.com/design/RhmUjt8EHFcIs571B7KrVM
 
 Sources used for this document: my portfolio (elijahcruzado.webflow.io), my LinkedIn profile (linkedin.com/in/elijahcruzado), my résumé PDF linked from the portfolio, the Haleon Huddle case study, and a hands on teardown of the AI assistant on emekarajis.com.
 
@@ -232,11 +233,11 @@ About two weeks, alongside a new full time role.
 | Date | Milestone | Status |
 | --- | --- | --- |
 | Wed Oct 21 (Week 8) | Proposal review, `intent.md`, repo created | Done |
-| By Fri Oct 23 | Figma wireframes for launcher, panel, messages and the four cards. Content files drafted, Legrand filled in | Content drafted. Figma and Legrand details still open |
+| By Fri Oct 23 | Figma wireframes for launcher, panel, messages and the four cards. Content files drafted, Legrand filled in | Content drafted. Figma done (Week 9). Legrand details still open |
 | By Mon Oct 26 | API route with system prompt, content loading and guardrails. Chat streaming locally. Stories for messages and panel | Done |
 | Wed Oct 28 (Week 9) | 2 to 3 minute work in progress demo. Deployed on Vercel | Done. Live on Vercel and embedded on my portfolio |
 | By Sun Nov 1 | Remaining cards, follow up chips, mobile layout, accessibility pass, all stories | Done (27 stories) |
-| By Tue Nov 3 | Testing (the seven checks in Success criteria), README with live URL and Figma link | Live URL done. Figma link open |
+| By Tue Nov 3 | Testing (the seven checks in Success criteria), README with live URL and Figma link | Live URL and Figma link done |
 | Wed Nov 4 (Week 10) | Midterm due | |
 
 ### Data
